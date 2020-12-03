@@ -1,7 +1,7 @@
 import logging
 
 # Logging
-def logger():
+def log():
     logger = logging.getLogger('tweepy')
     logger.setLevel(logging.DEBUG)
     handler = logging.FileHandler(

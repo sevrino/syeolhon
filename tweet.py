@@ -1,13 +1,18 @@
 import tweepy
 import json
 import random
+import threading as th
+
+if __name__ == "__main__":
+    print("Error")
+
+
 
 def twitting(message):
     # API Key Load
     with open('./config/setting.json') as json_file:
         json_data = json.load(json_file)
 
-        ver = json_data["ver"]
         apikey = json_data["api_key"]
         apisecret = json_data["apisecret"]
         access_token = json_data["access_token"]
@@ -19,15 +24,16 @@ def twitting(message):
     api = tweepy.API(auth)
     api.update_status(message)
 
-# Tweet draw
-def draw():
-    pass
+def twt():
+    # Tweet draw
+    number = random.randint(1, 2)
 
-# Load Tweet Data from json file
-def loaddata():
+    # Load Tweet Data from json file
     with open('./config/tweet/tweetting.json') as json_file:
         json_data = json.load(json_file)
 
+        tweet = json_data["%d" % (number)]
 
-def start():
-    twitting('트위터 봇 테스트 시작.')
+    # START
+    th.Timer(600.0, twt).start()
+    twitting(tweet)
