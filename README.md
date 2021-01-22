@@ -17,6 +17,7 @@
 
 ## 요구 성능
 RaspberryPi 2 이상 성능 권장
+
 Python 3.7 이상
 
 ## 기능
